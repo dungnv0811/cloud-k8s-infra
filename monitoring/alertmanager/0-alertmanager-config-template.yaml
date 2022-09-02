@@ -17,16 +17,16 @@ data:
 
     route:
       # default route, if no matcher matches the given alert
-      receiver: 'email-oogway-dev-all'
+      receiver: 'dungnv.itdn'
 
       routes:
         - match_re:
             severity: warning|error
             alertname: xxxxxx_(.+)
-          receiver: email-oogway-dev-all
+          receiver: dungnv.itdn
 
     receivers:
-      - name: 'email-oogway-dev-all'
+      - name: 'dungnv.itdn'
         email_configs:
           - to: 'dungnv.itdn@gmail.com'
             from: 'helloworld.itdn@gmail.com'
