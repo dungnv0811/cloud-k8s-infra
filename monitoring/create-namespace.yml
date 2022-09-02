@@ -1,0 +1,6 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: techcon-monitoring
+  labels:
+    name: techcon-monitoring

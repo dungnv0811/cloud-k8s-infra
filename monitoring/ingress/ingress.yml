@@ -1,0 +1,54 @@
+#---
+#apiVersion: extensions/v1beta1
+#kind: Ingress
+#metadata:
+#  name: techcon-monitoring
+#  namespace: techcon-monitoring
+#  annotations:
+#    kubernetes.io/ingress.class: traefik
+#    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+#spec:
+#  rules:
+#    - host: techcon-monitoring.hdi-dev.mgm-edv.de
+#      http:
+#        paths:
+#          - path: /prometheus
+#            backend:
+#              serviceName: stable-kube-prometheus-sta-prometheus
+#              servicePort: 8080
+#---
+#apiVersion: extensions/v1beta1
+#kind: Ingress
+#metadata:
+#  name: techcon-monitoring
+#  namespace: techcon-monitoring
+#  annotations:
+#    kubernetes.io/ingress.class: traefik
+#    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+#spec:
+#  rules:
+#    - host: techcon-monitoring.hdi-dev.mgm-edv.de
+#      http:
+#        paths:
+#          - path: /grafana
+#            backend:
+#              serviceName: stable-grafana
+#              servicePort: 80
+#---
+#apiVersion: extensions/v1beta1
+#kind: Ingress
+#metadata:
+#  name: techcon-monitoring
+#  namespace: techcon-monitoring
+#  annotations:
+#    kubernetes.io/ingress.class: traefik
+#    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+#spec:
+#  rules:
+#    - host: techcon-monitoring.hdi-dev.mgm-edv.de
+#      http:
+#        paths:
+#          - path: /alertmanager
+#            backend:
+#              serviceName: stable-kube-prometheus-sta-alertmanager
+#              servicePort: 9093

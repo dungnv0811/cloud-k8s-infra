@@ -1,0 +1,174 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/instance: alertmanager
+    app.kubernetes.io/component: alertmanager
+    app.kubernetes.io/part-of: monitoring-stack
+    app.kubernetes.io/managed-by: none
+  name: alertmanager
+  namespace: techcon-monitoring
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: alertmanager
+  namespace: techcon-monitoring
+  labels: &Labels
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/instance: alertmanager
+    app.kubernetes.io/component: alertmanager
+    app.kubernetes.io/part-of: monitoring-stack
+    app.kubernetes.io/managed-by: none
+spec:
+  serviceName: "alertmanager-operated"
+  replicas: 1
+  podManagementPolicy: OrderedReady
+  updateStrategy:
+    type: RollingUpdate
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels: *Labels
+  template:
+    metadata:
+      labels: *Labels
+    spec:
+      serviceAccountName: alertmanager
+      containers:
+        - name: prometheus-alertmanager
+          image: quay.io/prometheus/alertmanager:v0.21.0
+          imagePullPolicy: Always
+          args:
+            - --config.file=/etc/config/alertmanager.yml
+            - --storage.path=/data
+            - --web.listen-address=:9093
+            - --web.route-prefix=/
+            - --cluster.listen-address=$(POD_IP):6783
+            - --cluster.peer=alertmanager-0.alertmanager-operated.techcon-monitoring.svc:6783
+          env:
+          - name: POD_IP
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: status.podIP
+          ports:
+            - containerPort: 9093
+              name: http
+            - containerPort: 6783
+              name: mesh
+          readinessProbe:
+            httpGet:
+              path: /#/status
+              port: 9093
+            initialDelaySeconds: 30
+            timeoutSeconds: 30
+          volumeMounts:
+            - name: alertmanager-config
+              subPath: alertmanager.yml
+              mountPath: /etc/config/alertmanager.yml
+            - name: alertmanager-data
+              mountPath: "/data"
+              subPath: ""
+          resources:
+            limits:
+              cpu: 10m
+              memory: 50Mi
+            requests:
+              cpu: 10m
+              memory: 50Mi
+      volumes:
+        - name: alertmanager-config
+          configMap:
+            defaultMode: 420
+            name: alertmanager-config
+        - name: alertmanager-data
+          emptyDir: {}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: In
+                values:
+                - alertmanager
+            topologyKey: "kubernetes.io/hostname"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: alertmanager-operated
+    app.kubernetes.io/instance: alertmanager-operated
+    app.kubernetes.io/component: alertmanager
+    app.kubernetes.io/part-of: monitoring-stack
+    app.kubernetes.io/managed-by: none
+  name: alertmanager-operated
+  namespace: techcon-monitoring
+spec:
+  ports:
+    - name: mesh
+      port: 6783
+    - name: http
+      port: 9093
+  selector:
+    app.kubernetes.io/name: alertmanager
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alertmanager
+  namespace: techcon-monitoring
+  labels:
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/instance: alertmanager
+    app.kubernetes.io/component: alertmanager
+    app.kubernetes.io/part-of: monitoring-stack
+    app.kubernetes.io/managed-by: none
+spec:
+  ports:
+    - name: http
+      port: 9093
+  selector:
+    app.kubernetes.io/name: alertmanager
+---
+#apiVersion: traefik.containo.us/v1alpha1
+#kind: Middleware
+#metadata:
+#  labels:
+#    app.kubernetes.io/name: alertmanager
+#    app.kubernetes.io/instance: alertmanager
+#    app.kubernetes.io/component: alertmanager
+#    app.kubernetes.io/part-of: monitoring-stack
+#    app.kubernetes.io/managed-by: none
+#  name: alertmanager-basicauth
+#  namespace: techcon-monitoring
+#spec:
+#  basicAuth:
+#    secret: alertmanager-basic-auth-secret
+#---
+#apiVersion: networking.k8s.io/v1beta1
+#kind: Ingress
+#metadata:
+#  labels:
+#    app.kubernetes.io/name: alertmanager
+#    app.kubernetes.io/instance: alertmanager
+#    app.kubernetes.io/component: alertmanager
+#    app.kubernetes.io/part-of: monitoring-stack
+#    app.kubernetes.io/managed-by: none
+#  name: alertmanager
+#  namespace: techcon-monitoring
+#  annotations:
+#    kubernetes.io/ingress.class: traefik
+#    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+#    traefik.ingress.kubernetes.io/router.middlewares: techcon-monitoring-alertmanager-basicauth@kubernetescrd
+#spec:
+#  rules:
+#    - host: alertmanager.hdi-dev.mgm-edv.de
+#      http:
+#        paths:
+#          - backend:
+#              serviceName: alertmanager
+#              servicePort: http

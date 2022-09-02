@@ -1,0 +1,39 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/name: alertmanager-config
+    app.kubernetes.io/instance: alertmanager-config
+    app.kubernetes.io/component: alertmanager
+    app.kubernetes.io/part-of: monitoring-stack
+    app.kubernetes.io/managed-by: none
+  name: alertmanager-config
+  namespace: techcon-monitoring
+data:
+  alertmanager.yml: >
+    global:
+      resolve_timeout: 10m
+
+    route:
+      # default route, if no matcher matches the given alert
+      receiver: 'email-oogway-dev-all'
+
+      routes:
+        - match_re:
+            severity: warning|error
+            alertname: xxxxxx_(.+)
+          receiver: email-oogway-dev-all
+
+    receivers:
+      - name: 'email-oogway-dev-all'
+        email_configs:
+          - to: 'dungnv.itdn@gmail.com'
+            from: 'helloworld.itdn@gmail.com'
+            send_resolved: true
+            smarthost: 'smtp.mailtrap.io:587'
+            auth_username: '121b1293dfd237'
+            auth_password: 'd106cae5ab38fb'
+            require_tls: true
+            tls_config:
+              insecure_skip_verify: true
