@@ -46,7 +46,7 @@ spec:
             - --web.listen-address=:9093
             - --web.route-prefix=/
             - --cluster.listen-address=$(POD_IP):6783
-            - --cluster.peer=alertmanager-0.alertmanager-operated.techcon-monitoring.svc:6783
+            - --cluster.peer=alertmanager-0.alertmanager-operated.techcon-monitoring.svc.cluster.local:6783
           env:
           - name: POD_IP
             valueFrom:

@@ -29,6 +29,7 @@ spec:
             - '--storage.tsdb.path=/data/'
             - '--storage.tsdb.retention=30d'
             - '--web.external-url=http://localhost:9090'
+            - '--web.enable-admin-api'
           ports:
             - containerPort: 9090
           volumeMounts:
@@ -38,7 +39,7 @@ spec:
               mountPath: /data/
           resources:
             limits:
-              memory: "4Gi"
+              memory: "2Gi"
           securityContext:
             runAsUser: 0
       volumes:

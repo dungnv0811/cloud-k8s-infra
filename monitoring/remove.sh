@@ -1,6 +1,6 @@
 #!/bin/bash
 
-kubectl delete -f alertmanager
-kubectl delete -f node-exporter
-kubectl delete -f prometheus
-kubectl delete -f prometheus/volume
+kubectl delete -f monitoring/alertmanager
+kubectl delete -f monitoring/node-exporter
+kubectl delete -f monitoring/prometheus
+kubectl delete -f monitoring/prometheus/volume

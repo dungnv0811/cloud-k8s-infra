@@ -1,6 +1,6 @@
 #!/bin/bash
 
-kubectl create -f prometheus/volume
-kubectl create -f prometheus
-kubectl create -f node-exporter
-kubectl create -f alertmanager
+kubectl apply -f monitoring/prometheus/volume
+kubectl apply -f monitoring/prometheus
+kubectl apply -f monitoring/node-exporter
+kubectl apply -f monitoring/alertmanager

@@ -13,7 +13,7 @@ metadata:
 data:
   alertmanager.yml: >
     global:
-      resolve_timeout: 10m
+      resolve_timeout: 1m
 
     route:
       # default route, if no matcher matches the given alert
@@ -28,12 +28,12 @@ data:
     receivers:
       - name: 'dungnv.itdn'
         email_configs:
-          - to: 'dungnv.itdn@gmail.com'
-            from: 'helloworld.itdn@gmail.com'
+          - to: 'helloworld.itdn@gmail.com'
+            from: 'dungnv.itdn@gmail.com'
             send_resolved: true
-            smarthost: 'smtp.mailtrap.io:587'
-            auth_username: '121b1293dfd237'
-            auth_password: 'd106cae5ab38fb'
+            smarthost: 'smtp.gmail.com:587'
+            auth_username: 'dungnv.itdn@gmail.com'
+            auth_password: 'jifmjanjgdsfnwgc'
             require_tls: true
             tls_config:
               insecure_skip_verify: true
