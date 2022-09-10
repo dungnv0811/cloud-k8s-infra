@@ -3,14 +3,14 @@ kind: Ingress
 metadata:
   name: spring-microservice-ingress
   annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
     - host: dungvannguyen.com
       http:
         paths:
-          - path: /
-            pathType: Prefix
+          - path: /test
             backend:
               service:
                 name: spring-microservice
