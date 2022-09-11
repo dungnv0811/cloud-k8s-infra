@@ -51,7 +51,7 @@ spec:
   tls:
     - hosts:
         - thuyenthunghoian.com
-      secretName: example-app-tls
+      secretName: letsencrypt-secret-dvnguyen
   rules:
     - host: thuyenthunghoian.com
       http:

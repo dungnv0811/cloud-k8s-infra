@@ -6,7 +6,7 @@ metadata:
 spec:
   dnsNames:
     - thuyenthunghoian.com
-  secretName: example-app-tls
+  secretName: letsencrypt-secret-dvnguyen
   issuerRef:
     name: letsencrypt-cluster-issuer
     kind: ClusterIssuer

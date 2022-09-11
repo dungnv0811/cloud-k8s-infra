@@ -424,7 +424,7 @@ spec:
             - --validating-webhook=:8443
             - --validating-webhook-certificate=/usr/local/certificates/cert
             - --validating-webhook-key=/usr/local/certificates/key
-            - --default-ssl-certificate=default/letsencrypt-secret-prod
+            - --default-ssl-certificate=default/letsencrypt-secret-dvnguyen
           env:
             - name: POD_NAME
               valueFrom:
