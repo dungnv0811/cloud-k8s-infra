@@ -51,7 +51,7 @@ spec:
   tls:
     - hosts:
         - dungvannguyen.com
-      secretName: letsencrypt-staging
+      secretName: example-app-tls
   rules:
     - host: dungvannguyen.com
       http:
