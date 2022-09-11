@@ -50,10 +50,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - dungvannguyen.com
+        - thuyenthunghoian.com
       secretName: example-app-tls
   rules:
-    - host: dungvannguyen.com
+    - host: thuyenthunghoian.com
       http:
         paths:
           - path: /test
