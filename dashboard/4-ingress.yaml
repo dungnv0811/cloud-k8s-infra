@@ -12,6 +12,7 @@ spec:
       http:
         paths:
           - path: /dashboard
+            pathType: Prefix
             backend:
               service:
                 name: dashboard-metrics-scraper

@@ -11,7 +11,7 @@
   kubectl describe clusterissuer letsencrypt-cluster-issuer
   => status => ready
 3. create certificate
-  kubectl describe certificate letsencrypt-secret-dvnguyen
+  kubectl describe certificate letsencrypt-secret-dvnguyen -n ingress-nginx
 4. using it in ingress
 
 
