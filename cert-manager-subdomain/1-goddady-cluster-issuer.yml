@@ -1,0 +1,28 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-cluster-issuer
+spec:
+  acme:
+    # ACME Server
+    # prod : https://acme-v02.api.letsencrypt.org/directory
+    # staging : https://acme-staging-v02.api.letsencrypt.org/directory
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    # ACME Email address
+    email: dungnv.itdn@gmail.com
+    privateKeySecretRef:
+      name: letsencrypt-cluster-issuer-key
+    solvers:
+      - selector:
+          dnsNames:
+            - '*.thuyenthunghoian.com'
+        dns01:
+          webhook:
+            config:
+              apiKeySecretRef:
+                name: 3mM44UbgnHUZCZ_HuQBjZAExtP14Hc95JhfWt
+                key: HbK9JLDkSXRDMMy4p2tMyT
+              production: true
+              ttl: 600
+            groupName: acme.thuyenthunghoian.com
+            solverName: godaddy
