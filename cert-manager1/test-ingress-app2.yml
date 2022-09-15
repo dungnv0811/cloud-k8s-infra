@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app
-  namespace: app
+  namespace: app2
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     kubernetes.io/ingress.class: "nginx"
@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - app.thuyenthunghoian.com
+        - app2.thuyenthunghoian.com
       secretName: letsencrypt-secret-dvnguyen
   rules:
-    - host: app.thuyenthunghoian.com
+    - host: app2.thuyenthunghoian.com
       http:
         paths:
           - path: /
