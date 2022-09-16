@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: spring-microservice
-  namespace: default
 spec:
   replicas: 1
   selector:
@@ -19,7 +18,7 @@ spec:
     spec:
       containers:
         - name: spring-microservice
-          image: registry.gitlab.com/dungnv08111/techcon/web-dungnv:main-6722a973-1662266320
+          image: registry.gitlab.com/dungnv08111/techcon:main-6722a973-1662266320
           env:
             - name: MY_NODE_NAME
               valueFrom:
@@ -38,26 +37,26 @@ spec:
               memory: '256Mi'
               cpu: '500m'
             limits:
-              memory: '20Gi'
-              cpu: '4'
+              memory: '512Mi'
+              cpu: '1'
           volumeMounts:
             - name: log-path
               mountPath: /var/log/app
           ports:
             - name: http
               containerPort: 8080
-#          readinessProbe:
-#            httpGet:
-#              path: /demo/status
-#              port: http
-#            initialDelaySeconds: 20
-#            periodSeconds: 15
-#            failureThreshold: 6
-#          livenessProbe:
-#            httpGet:
-#              path: /demo/status
-#              port: http
-#            initialDelaySeconds: 120
+      #          readinessProbe:
+      #            httpGet:
+      #              path: /demo/status
+      #              port: http
+      #            initialDelaySeconds: 20
+      #            periodSeconds: 15
+      #            failureThreshold: 6
+      #          livenessProbe:
+      #            httpGet:
+      #              path: /demo/status
+      #              port: http
+      #            initialDelaySeconds: 120
       volumes:
         - name: log-path
           hostPath:
