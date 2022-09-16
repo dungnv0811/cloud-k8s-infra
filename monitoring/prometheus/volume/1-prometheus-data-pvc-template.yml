@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/part-of: monitoring-stack
     app.kubernetes.io/managed-by: none
   name: prometheus-data-pvc
-  namespace: techcon-monitoring
+  namespace: monitoring
 spec:
   accessModes:
     - ReadWriteMany

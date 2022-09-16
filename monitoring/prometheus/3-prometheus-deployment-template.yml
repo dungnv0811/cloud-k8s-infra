@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/part-of: monitoring-stack
     app.kubernetes.io/managed-by: none
   name: prometheus
-  namespace: techcon-monitoring
+  namespace: monitoring
 spec:
   replicas: 1
   strategy:
@@ -61,7 +61,7 @@ metadata:
     app.kubernetes.io/part-of: monitoring-stack
     app.kubernetes.io/managed-by: none
   name: prometheus
-  namespace: techcon-monitoring
+  namespace: monitoring
   annotations:
     prometheus.io/scrape: 'true'
     prometheus.io/path:   /
@@ -83,7 +83,7 @@ spec:
 #    app.kubernetes.io/part-of: monitoring-stack
 #    app.kubernetes.io/managed-by: none
 #  name: prometheus-basicauth
-#  namespace: techcon-monitoring
+#  namespace: monitoring
 #spec:
 #  basicAuth:
 #    secret: prometheus-basic-auth-secret
@@ -98,11 +98,11 @@ spec:
 #    app.kubernetes.io/part-of: monitoring-stack
 #    app.kubernetes.io/managed-by: none
 #  name: prometheus
-#  namespace: techcon-monitoring
+#  namespace: monitoring
 #  annotations:
 #    kubernetes.io/ingress.class: traefik
 #    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-#    traefik.ingress.kubernetes.io/router.middlewares: techcon-monitoring-prometheus-basicauth@kubernetescrd
+#    traefik.ingress.kubernetes.io/router.middlewares: monitoring-prometheus-basicauth@kubernetescrd
 #spec:
 #  rules:
 #    - host: prometheus.hdi-dev.mgm-edv.de

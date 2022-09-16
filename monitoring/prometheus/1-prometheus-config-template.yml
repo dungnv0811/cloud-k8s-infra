@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/part-of: monitoring-stack
     app.kubernetes.io/managed-by: none
   name: prometheus-config
-  namespace: techcon-monitoring
+  namespace: monitoring
 data:
   monitoring-prometheus-k8s-rules.yaml: |
     groups:
@@ -292,7 +292,7 @@ data:
           - role: endpoints
             namespaces:
               names:
-              - techcon-monitoring
+              - monitoring
           scheme: http
           path_prefix: /
           timeout: 10s

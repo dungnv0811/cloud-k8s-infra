@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/part-of: monitoring-stack
     app.kubernetes.io/managed-by: none
   name: node-exporter
-  namespace: techcon-monitoring
+  namespace: monitoring
 ---
 apiVersion: apps/v1
 kind: DaemonSet
@@ -21,7 +21,7 @@ metadata:
     app.kubernetes.io/part-of: monitoring-stack
     app.kubernetes.io/managed-by: none
   name: node-exporter
-  namespace: techcon-monitoring
+  namespace: monitoring
 spec:
   updateStrategy:
     type: OnDelete

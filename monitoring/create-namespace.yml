@@ -1,6 +1,6 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: techcon-monitoring
+  name: monitoring
   labels:
-    name: techcon-monitoring
+    name: monitoring

@@ -9,13 +9,13 @@ metadata:
     app.kubernetes.io/part-of: monitoring-stack
     app.kubernetes.io/managed-by: none
   name: alertmanager
-  namespace: techcon-monitoring
+  namespace: monitoring
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: alertmanager
-  namespace: techcon-monitoring
+  namespace: monitoring
   labels: &Labels
     app.kubernetes.io/name: alertmanager
     app.kubernetes.io/instance: alertmanager
@@ -46,7 +46,7 @@ spec:
             - --web.listen-address=:9093
             - --web.route-prefix=/
             - --cluster.listen-address=$(POD_IP):6783
-            - --cluster.peer=alertmanager-0.alertmanager-operated.techcon-monitoring.svc.cluster.local:6783
+            - --cluster.peer=alertmanager-0.alertmanager-operated.monitoring.svc.cluster.local:6783
           env:
           - name: POD_IP
             valueFrom:
@@ -106,7 +106,7 @@ metadata:
     app.kubernetes.io/part-of: monitoring-stack
     app.kubernetes.io/managed-by: none
   name: alertmanager-operated
-  namespace: techcon-monitoring
+  namespace: monitoring
 spec:
   ports:
     - name: mesh
@@ -120,7 +120,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: alertmanager
-  namespace: techcon-monitoring
+  namespace: monitoring
   labels:
     app.kubernetes.io/name: alertmanager
     app.kubernetes.io/instance: alertmanager
@@ -144,7 +144,7 @@ spec:
 #    app.kubernetes.io/part-of: monitoring-stack
 #    app.kubernetes.io/managed-by: none
 #  name: alertmanager-basicauth
-#  namespace: techcon-monitoring
+#  namespace: monitoring
 #spec:
 #  basicAuth:
 #    secret: alertmanager-basic-auth-secret
@@ -159,11 +159,11 @@ spec:
 #    app.kubernetes.io/part-of: monitoring-stack
 #    app.kubernetes.io/managed-by: none
 #  name: alertmanager
-#  namespace: techcon-monitoring
+#  namespace: monitoring
 #  annotations:
 #    kubernetes.io/ingress.class: traefik
 #    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-#    traefik.ingress.kubernetes.io/router.middlewares: techcon-monitoring-alertmanager-basicauth@kubernetescrd
+#    traefik.ingress.kubernetes.io/router.middlewares: monitoring-alertmanager-basicauth@kubernetescrd
 #spec:
 #  rules:
 #    - host: alertmanager.hdi-dev.mgm-edv.de

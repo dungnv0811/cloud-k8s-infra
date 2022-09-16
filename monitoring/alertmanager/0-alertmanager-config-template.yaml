@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/part-of: monitoring-stack
     app.kubernetes.io/managed-by: none
   name: alertmanager-config
-  namespace: techcon-monitoring
+  namespace: monitoring
 data:
   alertmanager.yml: >
     global:
