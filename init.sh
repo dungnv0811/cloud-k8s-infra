@@ -26,12 +26,6 @@ kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/ma
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/monitoring/prometheus/volume/0-prometheus-data-pv-template.yml
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/monitoring/prometheus/volume/1-prometheus-data-pvc-template.yml
 
-#elk
-kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/elk/0-elasticsearch-single.yaml
-kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/elk/1-filebeat-kubernetes.yaml
-kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/elk/2-logstash.yaml
-kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/elk/3-kibana.yaml
-
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/monitoring/prometheus/1-prometheus-config-template.yml
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/monitoring/prometheus/2-prometheus-rbac-template.yml
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/monitoring/prometheus/3-prometheus-deployment-template.yml
@@ -41,9 +35,15 @@ kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/ma
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/monitoring/alertmanager/0-alertmanager-config-template.yaml
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/monitoring/alertmanager/1-alertmanager-statefulset-template.yaml
 
+#elk
+kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/elk/0-elasticsearch-single.yaml
+kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/elk/1-filebeat-kubernetes.yaml
+kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/elk/2-logstash.yaml
+kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/elk/3-kibana.yaml
+
 # cert-manager
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager1/0-cert-manager.yaml
 
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager1/1-cert-issuer-nginx-ingress-prod.yaml
+#or
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager1/1-cert-issuer-nginx-ingress.yaml
-kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager1/2-certificate.yaml
