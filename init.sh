@@ -55,3 +55,4 @@ kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/ma
 #argocd
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/argocd/0-create-namespace.yml
 kubectl apply -n argocd -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/argocd/1-deployment.yml
+kubectl apply -n argocd -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/argocd/2-ingress.yml
