@@ -51,3 +51,7 @@ kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/ma
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/elk/2-logstash.yaml
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/elk/3-kibana.yaml
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/elk/4-ingress.yml
+
+#argocd
+kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/argocd/0-create-namespace.yml
+kubectl apply -n argocd -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/argocd/1-deployment.yml
