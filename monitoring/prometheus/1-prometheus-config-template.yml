@@ -15,6 +15,14 @@ data:
     groups:
     - name: alert.rules
       rules:
+      - alert: PrometheusTargetMissing
+        expr: up == 0
+        for: 0m
+        labels:
+          severity: error
+        annotations:
+          summary: Prometheus target missing (instance {{ $labels.instance }})
+          description: "A Prometheus target has disappeared. An exporter might be crashed.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
       - alert: TECHCONPodOutOfMemory
         expr: container_memory_usage_bytes/10000000 > 500
         for: 1m
