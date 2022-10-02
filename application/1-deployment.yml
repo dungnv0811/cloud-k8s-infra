@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: spring-microservice
-          image: registry.gitlab.com/dungnv08111/techcon:09dfd69a8ea0273d96dde38175fb9d00cd273c7b
+          image: registry.gitlab.com/dungnv08111/techcon:b9646e902d87b96b39b0df81f9afe08afbdf8ae8
           env:
             - name: MY_NODE_NAME
               valueFrom:

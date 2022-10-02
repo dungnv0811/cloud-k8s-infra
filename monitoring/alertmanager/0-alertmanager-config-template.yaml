@@ -14,11 +14,10 @@ data:
   alertmanager.yml: >
     global:
       resolve_timeout: 1m
-      slack_api_url: 'https://hooks.slack.com/services/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'
 
     route:
       # default route, if no matcher matches the given alert
-      receiver: 'dungnv.itdn'
+      receiver: 'slack-notifications'
 
       routes:
         - match_re:
@@ -27,18 +26,8 @@ data:
           receiver: slack-notifications
 
     receivers:
-      - name: 'dungnv.itdn'
-        email_configs:
-          - to: 'helloworld.itdn@gmail.com'
-            from: 'dungnv.itdn@gmail.com'
-            send_resolved: true
-            smarthost: 'smtp.gmail.com:587'
-            auth_username: 'dungnv.itdn@gmail.com'
-            auth_password: 'jifmjanjgdsfnwgc'
-            require_tls: true
-            tls_config:
-              insecure_skip_verify: true
       - name: 'slack-notifications'
         slack_configs:
-        - channel: '#techcon'
+        - api_url: 'https://hooks.slack.com/services/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'
+          channel: '#techcon'
           send_resolved: true

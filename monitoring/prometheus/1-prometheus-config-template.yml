@@ -23,69 +23,60 @@ data:
         annotations:
           summary: Prometheus target missing (instance {{ $labels.instance }})
           description: "A Prometheus target has disappeared. An exporter might be crashed.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-      - alert: TECHCONPodOutOfMemory
-        expr: container_memory_usage_bytes/10000000 > 500
-        for: 1m
-        labels:
-          severity: warning
-        annotations:
-          summary: "Host out of memory"
-          description: "Node memory is filling up (< 10% left)\n Currently: {{ $value | printf \"%.2f\" }}"
-          runbook: https://wiki.mgm-tp.com/confluence/display/COSMO/MIMAS+Runbook#MIMAS-Hostoutofmemory
       - alert: TECHCONHostOutOfMemory
         expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 95
         for: 1m
         labels:
           severity: warning
         annotations:
-          summary: "Host out of memory (instance {{ $labels.instance }} of MIMAS)"
+          summary: "Host out of memory (instance {{ $labels.instance }} of Techcon)"
           description: "Node memory is filling up (< 10% left)\n Currently: {{ $value | printf \"%.2f\" }}"
-          runbook: https://wiki.mgm-tp.com/confluence/display/COSMO/MIMAS+Runbook#MIMAS-Hostoutofmemory
+          runbook: https://test/Techcon+Runbook#Techcon-Hostoutofmemory
       - alert: TECHCONHostMemoryUnderMemoryPressure
         expr: rate(node_vmstat_pgmajfault[1m]) > 100
         for: 1m
         labels:
           severity: warning
         annotations:
-          summary: "Host memory under memory pressure (instance {{ $labels.instance }} of MIMAS)"
+          summary: "Host memory under memory pressure (instance {{ $labels.instance }} of Techcon)"
           description: "The node is under heavy memory pressure. High rate of major page faults\n  Currently: {{ $value | printf \"%.2f\" }}"
-          runbook: https://wiki.mgm-tp.com/confluence/display/COSMO/MIMAS+Runbook#MIMAS-Hostmemoryunderpressure
+          runbook: https://test/Techcon+Runbook#Techcon-Hostmemoryunderpressure
       - alert: TECHCONHostUnusualNetworkThroughputOut
         expr: sum by (instance) (irate(node_network_transmit_bytes_total[2m])) / 1024 / 1024 > 100
         for: 1m
         labels:
           severity: warning
         annotations:
-          summary: "Host unusual network throughput out (instance {{ $labels.instance }} of MIMAS)"
+          summary: "Host unusual network throughput out (instance {{ $labels.instance }} of Techcon)"
           description: "Host network interfaces are probably sending too much data (> 100 MB/s)\n  Currently: {{ $value | printf \"%.2f\" }}"
-          runbook: https://wiki.mgm-tp.com/confluence/display/COSMO/MIMAS+Runbook#MIMAS-Hostunusualnetworkthroughputout
+          runbook: https://test/Techcon+Runbook#Techcon-Hostunusualnetworkthroughputout
       - alert: TECHCONHostOutOfDiskSpace
         expr: (node_filesystem_avail_bytes{mountpoint="/rootfs"}  * 100) / node_filesystem_size_bytes{mountpoint="/rootfs"} < 90
         for: 1m
         labels:
           severity: warning
         annotations:
-          summary: "Host out of disk space (instance {{ $labels.instance }} of MIMAS)"
+          summary: "Host out of disk space (instance {{ $labels.instance }} of Techcon)"
           description: "Disk is almost full (< 10% left)\n  Currently: {{ $value | printf \"%.2f\" }}"
-          runbook: https://wiki.mgm-tp.com/confluence/display/COSMO/MIMAS+Runbook#MIMAS-Hostoutofdiskspace
+          runbook: https://test/Techcon+Runbook#Techcon-Hostoutofdiskspace
       - alert: TECHCONHostHighCpuLoad
         expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[1m])) * 100) > 80
         for: 1m
         labels:
           severity: warning
         annotations:
-          summary: "Host high CPU load (instance {{ $labels.instance }} of MIMAS)"
+          summary: "Host high CPU load (instance {{ $labels.instance }} of Techcon)"
           description: "CPU load is > 80%\n  Currently: {{ $value | printf \"%.2f\" }}"
-          runbook: https://wiki.mgm-tp.com/confluence/display/COSMO/MIMAS+Runbook#MIMAS-HostinhighCPUload
+          runbook: https://test/Techcon+Runbook#Techcon-HostinhighCPUload
       - alert: TECHCONHostNodeOvertemperatureAlarm
         expr: node_hwmon_temp_crit_alarm_celsius == 1
         for: 1m
         labels:
           severity: error
         annotations:
-          summary: "Host node overtemperature alarm (instance {{ $labels.instance }} of MIMAS)"
+          summary: "Host node overtemperature alarm (instance {{ $labels.instance }} of Techcon)"
           description: "Physical node temperature alarm triggered"
-          runbook: https://wiki.mgm-tp.com/confluence/display/COSMO/MIMAS+Runbook#MIMAS-Hostovertemperature
+          runbook: https://test/Techcon+Runbook#Techcon-Hostovertemperature
       - alert: TECHCONHostOomKillDetected
         expr: increase(node_vmstat_oom_kill[30m]) > 1
         for: 1m
@@ -94,7 +85,7 @@ data:
         annotations:
           summary: "Host OOM kill detected (instance {{ $labels.instance }})"
           description: "OOM kill detected"
-          runbook: https://wiki.mgm-tp.com/confluence/display/COSMO/MIMAS+Runbook#MIMAS-HostOOMkilldetected
+          runbook: https://test/Techcon+Runbook#Techcon-HostOOMkilldetected
 
   prometheus.yml: |-
     global:
