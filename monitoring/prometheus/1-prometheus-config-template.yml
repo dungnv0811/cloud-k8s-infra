@@ -23,13 +23,13 @@ data:
         annotations:
           summary: Prometheus target missing (instance {{ $labels.instance }})
           description: "A Prometheus target has disappeared. An exporter might be crashed.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-      - alert: TECHCONHostOutOfMemory
-        expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 95
+      - alert: TECHCONPodIsRunningOutOfMemory
+        expr: http_server_requests_seconds_sum{uri=~"/hello.*"}*1000 > 50
         for: 1m
         labels:
           severity: warning
         annotations:
-          summary: "Host out of memory (instance {{ $labels.instance }} of Techcon)"
+          summary: "Pod is running out of memory (instance {{ $labels.instance }} of Techcon)"
           description: "Node memory is filling up (< 10% left)\n Currently: {{ $value | printf \"%.2f\" }}"
           runbook: https://test/Techcon+Runbook#Techcon-Hostoutofmemory
       - alert: TECHCONHostMemoryUnderMemoryPressure
