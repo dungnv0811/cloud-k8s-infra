@@ -16,6 +16,7 @@ kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/ma
 
 # cert-manager
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager/0-cert-manager.yaml
+
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager/1-cert-issuer-nginx-ingress-prod.yaml
 #or
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager/1-cert-issuer-nginx-ingress.yaml
