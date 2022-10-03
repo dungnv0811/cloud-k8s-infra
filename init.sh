@@ -17,7 +17,7 @@ kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/ma
 # cert-manager
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager/0-cert-manager.yaml
 
-kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager/1-cert-issuer-nginx-ingress-prod.yaml
+kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager-full/1-cert-issuer-nginx-ingress-prod.yaml
 #or
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager/1-cert-issuer-nginx-ingress.yaml
 
@@ -59,9 +59,29 @@ kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/ma
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/elk/1-filebeat-kubernetes.yaml
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/elk/2-logstash.yaml
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/elk/3-kibana.yaml
-kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/elk/4-ingress.yml
+kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/elk/4-ingress.yaml
 
 #argocd
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/argocd/0-create-namespace.yml
 kubectl apply -n argocd -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/argocd/1-deployment.yml
 kubectl apply -n argocd -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/argocd/2-ingress.yml
+
+
+##############################################
+kubectl apply -f ingress-nginx
+kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager/0-cert-manager.yaml
+# wait 15s
+kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager/1-cert-issuer-nginx-ingress.yaml
+kubectl apply -f dashboard
+
+kubectl apply -f monitoring/prometheus/volume
+kubectl apply -f monitoring/prometheus
+kubectl apply -f monitoring/node-exporter
+kubectl apply -f monitoring/alertmanager
+kubectl apply -f monitoring/grafana
+
+kubectl apply -f elk
+
+kubectl apply -f argocd/0-create-namespace.yml
+kubectl apply -f argocd/1-deployment.yml -n argocd
+kubectl apply -f argocd/2-ingress.yml

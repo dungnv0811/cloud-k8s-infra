@@ -10,7 +10,7 @@ spec:
   tls:
     - hosts:
         - kibana.thuyenthunghoian.com
-      secretName: letsencrypt-secret-dvnguyen
+      secretName: letsencrypt-secret-kibana
   rules:
     - host: kibana.thuyenthunghoian.com
       http:

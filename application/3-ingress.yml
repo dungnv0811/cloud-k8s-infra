@@ -5,12 +5,17 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: letsencrypt
 spec:
+  tls:
+    - hosts:
+        - test.thuyenthunghoian.com
+      secretName: letsencrypt-secret-application
   rules:
-    - host: thuyenthunghoian.com
+    - host: test.thuyenthunghoian.com
       http:
         paths:
-          - path: /test
+          - path: /
             pathType: Prefix
             backend:
               service:

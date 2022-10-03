@@ -11,7 +11,7 @@ spec:
   tls:
     - hosts:
         - grafana.thuyenthunghoian.com
-      secretName: letsencrypt-secret-dvnguyen
+      secretName: letsencrypt-secret-grafana
   rules:
     - host: grafana.thuyenthunghoian.com
       http:
