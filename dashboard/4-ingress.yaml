@@ -11,7 +11,7 @@ spec:
   tls:
     - hosts:
         - dashboard.thuyenthunghoian.com
-      secretName: letsencrypt-secret-dvnguyen
+      secretName: letsencrypt-secret-dashboard
   rules:
     - host: dashboard.thuyenthunghoian.com
       http:

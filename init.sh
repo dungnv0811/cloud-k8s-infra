@@ -71,7 +71,7 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/dungnv0811/cloud-k8
 kubectl apply -f ingress-nginx
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager/0-cert-manager.yaml
 # wait 15s
-kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager/1-cert-issuer-nginx-ingress.yaml
+kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager/1-cert-issuer-nginx-ingress-prod.yaml
 kubectl apply -f dashboard
 
 kubectl apply -f monitoring/prometheus/volume
