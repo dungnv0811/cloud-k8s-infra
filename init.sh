@@ -45,6 +45,14 @@ kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/ma
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/monitoring/alertmanager/1-alertmanager-statefulset-template.yaml
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/monitoring/alertmanager/2-ingress.yml
 #grafana
+kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/monitoring/grafana/0-pv.yml
+kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/monitoring/grafana/1-service-account.yaml
+kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/monitoring/grafana/2-configmap.yaml
+kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/monitoring/grafana/3-pvc.yaml
+kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/monitoring/grafana/3-secret.yaml
+kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/monitoring/grafana/4-deployment.yaml
+kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/monitoring/grafana/5-service.yaml
+kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/monitoring/grafana/6-ingress.yaml
 
 #elk
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/elk/0-elasticsearch-single.yaml
