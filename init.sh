@@ -86,7 +86,8 @@ kubectl apply -f argocd/0-create-namespace.yml
 kubectl apply -f argocd/1-deployment.yml -n argocd
 kubectl apply -f argocd/2-ingress.yml
 
-kubectl apply -f application -n test
+kubectl apply -f deployment/stage -n stage
+kubectl apply -f deployment/prod -n prod
 
 
 ##############################################
@@ -95,6 +96,7 @@ https://grafana.thuyenthunghoian.com/login
 https://kibana.thuyenthunghoian.com/app/kibana
 https://argocd.thuyenthunghoian.com/
 
-
+#############################################
+http_server_requests_seconds_sum{uri=~"/hello.*"}*1000
 
 

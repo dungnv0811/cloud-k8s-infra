@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - test.thuyenthunghoian.com
-      secretName: letsencrypt-secret-application
+        - prod.thuyenthunghoian.com
+      secretName: letsencrypt-secret-prod
   rules:
-    - host: test.thuyenthunghoian.com
+    - host: prod.thuyenthunghoian.com
       http:
         paths:
           - path: /
