@@ -1,0 +1,17 @@
+docker run -d --rm --name rancher -p 80:80 -p 443:443 --privileged rancher/rancher:v2.5.2
+
+docker logs rancher  2>&1 | grep "Bootstrap Password:"
+
+
+{
+  "type": "service_account",
+  "project_id": "kubernetes-315301",
+  "private_key_id": "574e51d5372159bc55cd1944bfde0bd8a52a183b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCrapUdHtCl6+1D\ncrDfG3grchSP0mEChgfX0DYyUM7qfszaj6Hbavp5MDO56jxcEA4iPS4yy+F66bsF\ndU62cffpRqpBrnCGAjJ1UGTDCDzyUL5KZDZp9rgisROIxennJh5+Q836w3IPDSSu\nZdhbyytHvIdn4bNY9oUv1ReC7TWrZ3l8TbDBQ2WGHw9s9/zIlf3F1hH+vMFO71QX\nBwjq9KdOkauwiEvV7YAk36TU+WrIND+Eaao+0SSMZhTW7k+fFFi9aiQy747mnGI9\nJD4ZwbP9xy8oUx5eFNpkNDBsRoARUou1ftHY+JkaOv3YbzIGaFf5DCaRAF4jamhY\nButFcV91AgMBAAECggEACefinphvh8savrVTxczdVKtmx0npy77JmL3iR+WWE4SI\n24+F07t6poKz1ohT/SD7ZByjfRF9of/8TAwzpITxBeTMxXdqbsAVQOTIseGZvgoO\n+RcR8u0sRmrzvUlsoyw3gmXyMw3U20xP5Jkjl+hlg6OAMq9fESLL3xACKBGDsrgz\nnMqAJDV1HHF9IIUlEStvk3FR6JEuI3AqT7067r/ZWgZlNaq7wDAWqIndUukYMWSx\nb+k0Vc6rrmJASw6EU/yym5xWY6wuRU3rq4eb68IdPRIZ5dqesh+Fq7jENZY9qHJm\n+67GjXX0FJfCOtRhfmDbIuyFj6JNTMpfVrnO/Dv0sQKBgQDVDgUt596oRGvE3W0O\nxlv5PATWs51d221JUgsUwQcENb8y262F4JQOY4vhIFpql9ngvxjn0HM6hU1BjHMt\ncXaPF9OnY5grk+pQXHdEJM6kjZTRrMawNux+UmNj1TgY/MXCQUGmUcKeHZjMvFT6\nSxQ5eRoxsF0NflxQzgoaK/JqcQKBgQDN9/M+jAYrOU/R9A4o8ocGoAeFSLeMX0Jz\nrwei2R21Ffdp8HzsQaQ3DpqYv0GGxZPAyy/KScwlVr7gwWB96+l858i+nPpqIl50\nzn2YcVsoO7P216ECeWgDtMZpPCk0WrFcVS2obZvX+CqPbtTcLGRKUP1UmURDghRr\nlkeqCycfRQKBgQDSQyHtahYd7liFUxmcKTr/v7HuyhiWVkWGxMdW1iE8kGZ/pLmd\nlEPJ54hWx300EWTfHvlPXjM6H/BcrmXFBWNCWPtzCSFWcIYghQDXaZPeZjPmsiLs\nKWhASsL39aeFUYFB8vD9WVc+gGsaMwuScKInDlNBkpJjDL/Cp3Tk21ZEoQKBgApD\nqwmY7M3Go2WxJeuAep4n53gK8aq7LJKbTGQfMc3OdHABHhigBNEBl065aUiQHBbl\niVIpb1UFB6onuOlNkms5GdX1+LzFTbPAfp3UOFi+8O8CO/HlnvtgTOr9pogHZQNW\n81mLbNLMeUKAoXb/d1gExTssECzVFLNv385nk+GJAoGARaVTCZ4bDd2NJHeT4Hl2\nRivclv9MjqkPoW+zSTFi3kuFok5J+Z3ajjv4bMURMCVsWMO+726CW01qYRUJQLHo\nEbBeiK9R8uPo6+rW8uls14negwecWSXuW64fFYZULKx4lMGFOBEmHnkQRvfnb0Ul\nlvtK1r+i37w3c57mKqQKOPs=\n-----END PRIVATE KEY-----\n",
+  "client_email": "techcon-852@kubernetes-315301.iam.gserviceaccount.com",
+  "client_id": "116281327585809712108",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/techcon-852%40kubernetes-315301.iam.gserviceaccount.com"
+}

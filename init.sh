@@ -79,8 +79,9 @@ kubectl apply -f monitoring/prometheus
 kubectl apply -f monitoring/node-exporter
 kubectl apply -f monitoring/alertmanager
 kubectl apply -f monitoring/grafana
-# add webhook vào slack
 
+add webhook vào slack
+####
 kubectl apply -f elk
 
 kubectl apply -f argocd/0-create-namespace.yml
@@ -90,6 +91,9 @@ kubectl apply -f argocd/2-ingress.yml
 kubectl apply -f deployment/stage -n stage
 kubectl apply -f deployment/prod -n prod
 
+####
+docker run -d --rm --name rancher -p 80:80 -p 443:443 --privileged rancher/rancher:v2.5.2
+docker exec -it rancher bash
 
 ##############################################
 https://prometheus.thuyenthunghoian.com/
