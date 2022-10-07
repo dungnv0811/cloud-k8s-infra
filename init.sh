@@ -79,6 +79,7 @@ kubectl apply -f monitoring/prometheus
 kubectl apply -f monitoring/node-exporter
 kubectl apply -f monitoring/alertmanager
 kubectl apply -f monitoring/grafana
+# add webhook vào slack
 
 kubectl apply -f elk
 
