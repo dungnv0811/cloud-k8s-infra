@@ -67,12 +67,24 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/dungnv0811/cloud-k8
 kubectl apply -n argocd -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/argocd/2-ingress.yml
 
 
+
+
+
+
+
+
+
+
+# Deploy PROD
 ##############################################
 kubectl apply -f ingress-nginx
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager/0-cert-manager.yaml
 # wait 15s
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager/1-cert-issuer-nginx-ingress-prod.yaml
 kubectl apply -f dashboard
+
+kubectl apply -f deployment/uat -n uat
+kubectl apply -f deployment/prod -n prod
 
 kubectl apply -f monitoring/prometheus/volume
 kubectl apply -f monitoring/prometheus
@@ -88,9 +100,6 @@ kubectl apply -f argocd/0-create-namespace.yml
 kubectl apply -f argocd/1-deployment.yml -n argocd
 kubectl apply -f argocd/2-ingress.yml
 
-kubectl apply -f deployment/stage -n stage
-kubectl apply -f deployment/prod -n prod
-
 ####
 docker run -d --rm --name rancher -p 80:80 -p 443:443 --privileged rancher/rancher:v2.5.2
 docker exec -it rancher bash
@@ -102,6 +111,7 @@ https://kibana.thuyenthunghoian.com/app/kibana
 https://argocd.thuyenthunghoian.com/
 
 #############################################
-http_server_requests_seconds_sum{uri=~"/hello.*"}*1000
+high memory consume: http_server_requests_seconds_sum{uri=~"/hello.*"}*1000
+died server: up{job="uat-application"}
 
 
