@@ -28,7 +28,7 @@ data:
     receivers:
       - name: 'slack-notifications'
         slack_configs:
-        - api_url: 'https://hooks.slack.com/services/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'
+        - api_url: 'https://hooks.slack.com/services/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'
           channel: '#techcon'
           send_resolved: true
           icon_url: https://avatars3.githubusercontent.com/u/3380462

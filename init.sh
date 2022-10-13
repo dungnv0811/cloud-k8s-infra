@@ -78,6 +78,8 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/dungnv0811/cloud-k8
 # Deploy PROD
 ##############################################
 kubectl apply -f ingress-nginx
+add DNS
+
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager/0-cert-manager.yaml
 # wait 15s
 kubectl apply -f https://raw.githubusercontent.com/dungnv0811/cloud-k8s-infra/master/cert-manager/1-cert-issuer-nginx-ingress-prod.yaml
@@ -106,6 +108,7 @@ docker exec -it rancher bash
 
 ##############################################
 https://prometheus.thuyenthunghoian.com/
+https://alertmanager.thuyenthunghoian.com/#/alerts
 https://grafana.thuyenthunghoian.com/login
 https://kibana.thuyenthunghoian.com/app/kibana
 https://argocd.thuyenthunghoian.com/
@@ -113,5 +116,6 @@ https://argocd.thuyenthunghoian.com/
 #############################################
 high memory consume: http_server_requests_seconds_sum{uri=~"/hello.*"}*1000
 died server: up{job="uat-application"}
+prometheus.monitoring.svc.cluster.local:9090
 
 
