@@ -117,5 +117,6 @@ https://argocd.thuyenthunghoian.com/
 high memory consume: http_server_requests_seconds_sum{uri=~"/hello.*"}*1000
 died server: up{job="uat-application"}
 prometheus.monitoring.svc.cluster.local:9090
+dashboard_token
 
 
