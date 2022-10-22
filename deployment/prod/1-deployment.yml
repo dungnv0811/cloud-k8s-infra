@@ -38,7 +38,7 @@ spec:
               memory: '256Mi'
               cpu: '500m'
             limits:
-              memory: '512Mi'
+              memory: '515Mi'
               cpu: '1'
           volumeMounts:
             - name: log-path
